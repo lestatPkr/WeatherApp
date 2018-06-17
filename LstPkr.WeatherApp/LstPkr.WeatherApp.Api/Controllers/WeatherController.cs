@@ -24,7 +24,7 @@ namespace LstPkr.WeatherApp.Api.Controllers
         [HttpGet]
         [Route("current")]
         [Produces(typeof(DailyForecast))]
-        public IActionResult GetCurrent(string city)
+        public IActionResult GetCurrent([FromQuery]string city)
         {
             try
             {

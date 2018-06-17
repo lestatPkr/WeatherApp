@@ -16,16 +16,20 @@ namespace LstPkr.WeatherApp.Api.Models
         public int WindSpeed { get; private set; }
         [JsonProperty("humidity")]
         public int Humidity { get; private set; }
-        [JsonProperty("unixDate")]
-        public long UnixDate { get; private set; }
+        [JsonProperty("weatherId")]
+        public int WeatherId { get; private set; }
+        [JsonProperty("date")]
+        public DateTime Date { get; private set; }
 
-        public DailyForecast(string city, int temperature, int windSpeed, int humidity, long unixDate)
+        public DailyForecast(string city, int temperature, int windSpeed, 
+        int humidity, int weatherId, DateTime date)
         {
             City = city;
             Temperature = temperature;
             WindSpeed = windSpeed;
             Humidity = humidity;
-            UnixDate = unixDate;
+            WeatherId = weatherId;
+            Date = date;
         }
 
     }

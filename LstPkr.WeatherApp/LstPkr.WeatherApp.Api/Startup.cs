@@ -37,6 +37,7 @@ namespace LstPkr.WeatherApp.Api
                 });
             });
             services.AddTransient<IWeatherService, OpenWeatherService>();
+            services.AddCors();
             services.AddMvc();
         }
 
@@ -50,7 +51,8 @@ namespace LstPkr.WeatherApp.Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Weather API");
                 c.RoutePrefix = string.Empty;
             });
-
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:8080"));
             app.UseMvc();
         }
     }
