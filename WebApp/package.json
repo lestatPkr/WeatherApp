@@ -15,7 +15,8 @@
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@fortawesome/vue-fontawesome": "0.0.23",
     "axios": "^0.18.0",
-    "vue": "^2.5.2"
+    "vue": "^2.5.2",
+    "vue2-autocomplete-js": "^0.2.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

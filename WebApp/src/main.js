@@ -12,7 +12,5 @@ new Vue({
   template: '<App/>'
 })
 
-
 Vue.use(require('vue-moment'))
 console.log(Vue.moment())
-

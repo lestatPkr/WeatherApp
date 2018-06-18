@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  name: "WeatherIcon",
+  name: 'WeatherIcon',
   props: ['weatherId']
 
 };
@@ -83,7 +83,7 @@ html *:after {
   display: block;
   width: 4.5625em;
   height: 1em;
-  background: currentColor;
+
   box-shadow: 0 0.4375em 0 -0.0625em #fff;
 }
 .cloud:nth-child(2) {
@@ -97,7 +97,7 @@ html *:after {
   animation: cloud 4s linear infinite;
 }
 .cloud:nth-child(2):after {
-  background: #fff;
+   background: #fff;
 }
 
 .sun {
@@ -156,7 +156,7 @@ html *:after {
   width: 3.75em;
   height: 3.75em;
   margin: 0.375em 0 0 -2em;
-  background: currentColor;
+  /* background: currentColor; */
 }
 
 .rain:after {

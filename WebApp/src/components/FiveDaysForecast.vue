@@ -2,16 +2,17 @@
 <div class="wa-container">
 
  <section class="row">
-    <div class="wa-div-data">
-       <h1>{{current.city}}</h1>
-      <h2>{{current.dayOfWeek}}, {{current.day}}</h2>
-      <h3><span><i class="wi wi-thermometer"></i></span> {{current.temperature}}ºC</h3>
-      <h4><span><i class="wi wi-strong-wind"></i></span> {{current.windSpeed}} m/s</h4>
-      <h4><span><i class="wi wi-humidity"></i></span> {{current.humidity}}%</h4>
+    <div v-for="(item, index) in forecast" :key="index"  class="wa-div-data col">
+      <div class="wa-div-icon">
+        <weather-icon :weatherId="item.weather" class="weather-icon"/>
+      </div>
+      <h3>{{item.day}}</h3>
+      <h4>{{item.dayOfWeek.substring(0,3)}}</h4>
+      <span><i class="wi wi-thermometer"></i> {{item.temperature}}ºC</span> </br>
+      <span><i class="wi wi-strong-wind"></i> {{item.windSpeed}} m/s</span> </br>
+      <span><i class="wi wi-humidity"></i> {{item.humidity}}%</span> </br>
     </div>
-    <div class="wa-div-icon">
-      <weather-icon :weatherId="current.weather" class="weather-icon"/>
-    </div>
+
   </section>
 </div>
 
@@ -23,7 +24,7 @@ import moment from 'vue-moment'
 import Forecast from '../models/Forecast.js';
 import WeatherIcon from './WeatherIcon'
 export default {
-  name: 'CurrentWeather',
+  name: 'FiveDaysForecast',
   components: {
     WeatherIcon
   },
@@ -32,7 +33,7 @@ export default {
   ],
   data () {
     return {
-      current: Forecast,
+      forecast: [],
       errors: []
 
     }
@@ -40,9 +41,9 @@ export default {
   methods:{
     updateData(){
       var api =  new WeatherService();
-      api.getCurrent(this.$props.city)
+      api.getForecast(this.$props.city)
       .then(response => {
-        this.current = response
+        this.forecast = response
       })
       .catch(e => {
         this.errors.push(e)
@@ -58,36 +59,32 @@ export default {
     this.updateData()
   }
 
-
 }
 </script>
 
 <style scoped>
  .wa-container{
-    text-align: left;
+    text-align: center;
     width: 100%;
     padding: 20px ;
-    background-color:#636363;
-    margin: 10px
+
+    margin: 10px;
   }
   section{
     max-width: 550px;
     margin: 0 auto;
-
-
+  }
+  section>div{
+    margin-left:5px;
+    background-color:#636363;
   }
   section:first-child{
     margin-top:20px;
   }
   .weather-icon{
-    font-size: 25px
+    font-size: 5px
   }
 
-  .wa-div-data, .wa-div-icon{
-    width: 50%;
-  }
-  .wa-div-icon{
-    position: relative;
-    left: -60px;
-  }
+
+
 </style>

@@ -35,8 +35,7 @@ namespace LstPkr.WeatherApp.Api.Controllers
             {
 
                 return NotFound(ex.Message);
-            }
-            
+            }            
         }
 
         [HttpGet]
